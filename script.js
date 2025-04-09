@@ -1,54 +1,36 @@
-console.log("Welcome to 149FM Radio!");
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("Welcome to 149FM Radio!");
 
-// Redarea audio folosind Howler.js
-const sound = new Howl({
-    src: ['https://stream.zeno.fm/6vc4ddpr3ehvv'],
-    html5: true, // Asigură compatibilitatea cu fluxurile streaming
-    onplay: () => console.log('Radio started playing'),
-    onloaderror: (id, error) => console.error('Error loading audio:', error),
-    onplayerror: (id, error) => {
-        console.error('Error playing audio:', error);
-        alert('Unable to play the audio stream. Please try again later.');
-    }
-});
-
-// Funcție pentru a inițializa evenimentele legate de butonul play
-function initializePlayButton() {
     const playButton = document.querySelector('.play-button');
 
     if (!playButton) {
-        console.log("Play button not found!");
+        console.error("Butonul de play nu a fost găsit!");
         return;
     }
 
-    // Eveniment pentru redarea audio
+    let sound; // Declară variabila sound în scopul global al funcției
+
     playButton.addEventListener('click', () => {
+        if (!sound) {
+            sound = new Howl({
+                src: ['https://stream.zeno.fm/6vc4ddpr3ehvv'],
+                html5: true,
+                onplay: () => console.log('Redarea a început'),
+                onloaderror: (id, error) => console.error('Eroare la încărcarea audio:', error),
+                onplayerror: (id, error) => {
+                    console.error('Eroare la redarea audio:', error);
+                    alert('Nu se poate reda fluxul audio. Vă rugăm să încercați din nou mai târziu.');
+                }
+            });
+        }
         sound.play();
-        playButton.classList.add('playing'); // Adăugăm o clasă pentru stiluri dinamice
-        console.log('Play button clicked');
+        playButton.classList.add('playing');
+        console.log('Butonul de play a fost apăsat');
     });
 
-    // Animație pe buton la click
-    playButton.addEventListener('mousedown', () => {
-        playButton.classList.add('pressed');
-    });
-
-    playButton.addEventListener('mouseup', () => {
-        playButton.classList.remove('pressed');
-    });
-
-    // Schimbarea culorii la hover folosind clase CSS
-    playButton.addEventListener('mouseover', () => {
-        playButton.classList.add('hovered');
-    });
-
-    playButton.addEventListener('mouseout', () => {
-        playButton.classList.remove('hovered');
-    });
-}
-
-// Inițializare generală la încărcarea paginii
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Document fully loaded');
-    initializePlayButton();
+    // Gestionarea animațiilor și a schimbărilor de stil
+    playButton.addEventListener('mousedown', () => playButton.classList.add('pressed'));
+    playButton.addEventListener('mouseup', () => playButton.classList.remove('pressed'));
+    playButton.addEventListener('mouseover', () => playButton.classList.add('hovered'));
+    playButton.addEventListener('mouseout', () => playButton.classList.remove('hovered'));
 });
