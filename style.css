@@ -1,25 +1,136 @@
-/* === RESET & FONT === */
+body {
+  background-color: #0c0c0c;
+  font-family: 'Courier New', monospace;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
 
-{ box-sizing: border-box; margin: 0; padding: 0; } body { font-family: 'Courier New', monospace; background: #0d0d0d; color: #f2f2f2; text-align: center; padding: 2rem 1rem; position: relative; overflow-x: hidden; }
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+}
 
+h1 {
+  font-size: 2.5rem;
+  color: #ff007f;
+  text-shadow: 0 0 8px #ff007f;
+  margin-bottom: 0.2rem;
+}
 
-/* === NOISE OVERLAY === */ .noise-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; background-image: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif'); opacity: 0.02; z-index: 1; }
+h1 span {
+  display: block;
+  font-size: 2rem;
+}
 
-/* === HEADER === */ header { z-index: 2; position: relative; font-size: 2.8rem; margin-bottom: 1rem; color: #ff0057; text-shadow: 0 0 5px #ff0057, 0 0 15px #ff0057; }
+.subtitle {
+  font-style: italic;
+  font-size: 1rem;
+  color: #ccc;
+}
 
-.slogan { font-size: 1.2rem; margin-bottom: 1rem; color: #ccc; font-style: italic; }
+.play-button {
+  background-color: #ff007f;
+  border: none;
+  padding: 1rem 2rem;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  border-radius: 10px;
+  transition: background 0.3s, transform 0.3s;
+}
 
-/* === BUTTON === */ .play-button, .donate button { background: #ff0057; color: #fff; padding: 1rem 2rem; border: none; border-radius: 3px; font-size: 1rem; margin: 1rem auto; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 5px #ff0057; } .play-button:hover, .donate button:hover { background-color: #e6004c; transform: scale(1.05); }
+.play-button:hover {
+  background-color: #e60073;
+  transform: scale(1.05);
+}
 
-/* === AUDIO === */ audio { width: 90%; max-width: 600px; margin: 1rem auto; background: #111; border-radius: 5px; padding: 1rem; box-shadow: 0 0 10px #ff0057; z-index: 2; position: relative; }
+.stream-section {
+  text-align: center;
+  padding: 2rem 1rem;
+}
 
-/* === LIVE BANNER === */ .banner { background-color: #222; padding: 1rem; margin: 1.5rem auto; border-left: 4px solid #ff0057; font-weight: bold; color: #ff0057; text-shadow: 0 0 5px #ff0057; max-width: 600px; }
+#fallback-player {
+  width: 90%;
+  max-width: 400px;
+  margin-top: 1rem;
+  border-radius: 10px;
+}
 
-/* === SECTIONS === */ .about-radio, .donate, .social-media { background: #1a1a1a; padding: 1.5rem; border-radius: 6px; margin: 2rem auto; max-width: 700px; position: relative; z-index: 2; } .about-radio h3, .donate h3, .social-media h3 { color: #ffcc00; margin-bottom: 0.5rem; } .about-radio p, .donate p { color: #ccc; font-size: 1rem; }
+.loader {
+  border: 4px solid #333;
+  border-top: 4px solid #ff007f;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 1rem auto;
+  display: none;
+}
 
-/* === SOCIAL LINKS === */ .social-media a { margin: 0 0.5rem; text-decoration: none; color: #fff; background-color: #ff0057; padding: 0.5rem 1rem; border-radius: 3px; transition: background 0.3s ease; } .social-media a:hover { background-color: #e6004c; }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
-/* === LOADER === */ .loader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.9); display: flex; justify-content: center; align-items: center; z-index: 9999; } .spinner { border: 5px solid #f3f3f3; border-top: 5px solid #ff0057; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; } @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.on-air {
+  margin-top: 1rem;
+  color: #ff007f;
+  font-weight: bold;
+  background: #1a1a1a;
+  padding: 0.5rem;
+  border-left: 3px solid #ff007f;
+}
 
-/* === RESPONSIVE === */ @media (max-width: 600px) { header { font-size: 2rem; } .slogan { font-size: 1rem; } .banner, .about-radio, .donate, .social-media { padding: 1rem; } .play-button, .donate button { width: 90%; font-size: 1rem; } }
+.despre, .donatii, .social {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #111;
+  margin: 1rem 0;
+  border-radius: 12px;
+}
 
+h3 {
+  color: #ffd700;
+  margin-bottom: 1rem;
+}
+
+.donate-button {
+  background-color: #ff007f;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.donate-button:hover {
+  background-color: #e60073;
+  transform: scale(1.05);
+}
+
+.icons a {
+  color: #ff007f;
+  font-size: 1.5rem;
+  margin: 0 0.5rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.icons a:hover {
+  color: #ffd700;
+  transform: scale(1.2);
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .play-button, .donate-button {
+    width: 80%;
+    padding: 0.75rem;
+  }
+}
