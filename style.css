@@ -1,136 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
-}
-
-h1 {
-    color: #1e90ff;
-}
-audio {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    display: block;
-    border-radius: 8px;
-    background-color: #333;
-    padding: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-h2 {
-    color: #1e90ff;
-    font-size: 24px;
-}
-/* Modifică fundalul și aspectul general */
-body {
-    background-color: #121212; /* Fundal întunecat */
-    color: #fff; /* Text alb */
-    font-family: 'Arial', sans-serif;
-}
-
-/* Personalizează butoanele */
-button {
-    background-color: #FF4500;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-/* Efect de hover pe butoane */
-button:hover {
-    background-color: #FF6347;
-}
-
-/* Personalizează headerul pentru a include un logo */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-
-header img {
-    width: 100px;
-    height: auto;
-}
-
-/* Stilizare pentru secțiunea de playlist */
-.playlist {
-    background-color: #1a1a1a;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-/* Animare pentru audio player */
-audio {
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 5px;
-    background-color: #333;
-}
-.banner {
-    background-color: #FF4500;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-}
 /* Stiluri globale */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-/* Stiluri pentru containerul principal */
-.radio-player {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 40px auto;
-    text-align: center;
-}
-
-/* Stiluri pentru titlu */
-.radio-player h2 {
-    font-size: 2rem;
-    color: #007BFF;
-    margin-bottom: 10px;
-}
-
-/* Stiluri pentru audio */
-.radio-player audio {
-    width: 100%;
-    border-radius: 5px;
-    margin-top: 20px;
-    height: 40px;
-    background-color: #ddd;
-}
-
-/* Stiluri pentru descriere */
-.radio-player p {
-    font-size: 1rem;
-    color: #555;
-    margin-top: 20px;
-}
-
-/* Stiluri pentru textul ascultat */
-.radio-player strong {
-    color: #007BFF;
-}
-/* Fondul paginii */
 body {
     background: linear-gradient(to right, #00c6ff, #0072ff);
     font-family: 'Arial', sans-serif;
@@ -158,7 +26,62 @@ header {
     }
 }
 
-/* Butoane personalizate */
+/* Titlu principal */
+h1 {
+    color: #1e90ff;
+    font-size: 3rem;
+}
+
+/* Secțiunea Live Now */
+.live-radio {
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #fff;
+}
+
+/* Banner */
+.banner {
+    background-color: #FF4500;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Player audio personalizat */
+.radio-player {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+/* Audio */
+.radio-player audio {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+    height: 40px;
+    background-color: #ddd;
+}
+
+/* Descriere radio */
+.radio-player p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 20px;
+}
+
+/* Textul ascultat */
+.radio-player strong {
+    color: #007BFF;
+}
+
+/* Stiluri butoane personalizate */
 button {
     background-color: #ff7f50;
     border: none;
@@ -173,14 +96,7 @@ button:hover {
     transform: scale(1.1);
 }
 
-/* Secțiunea "Live Now" */
-.live-radio {
-    font-size: 1.5em;
-    margin-top: 20px;
-    color: #fff;
-}
-
-/* Efect pentru imagini */
+/* Efect de hover pe imagini */
 img {
     max-width: 100%;
     height: auto;
@@ -193,4 +109,26 @@ img {
     font-size: 1.2em;
     color: #ddd;
     margin-top: 50px;
+}
+
+/* Butoane pentru ascultare */
+.play-button {
+    background-color: #FF4500;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.play-button:hover {
+    background-color: #FF6347;
+    transform: scale(1.05);
+}
+
+/* Personalizare pentru text */
+h2 {
+    color: #1e90ff;
+    font-size: 24px;
 }
