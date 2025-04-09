@@ -1,45 +1,36 @@
-<!DOCTYPE html><html lang="ro">
+<!DOCTYPE html>
+<html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>149FM Radio</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/howler@2.2.0/dist/howler.min.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="noise-overlay"></div>  <header>
+  <div class="container">
     <h1>149FM Underground Radio</h1>
-  </header>  <main>
-    <p class="slogan">Sunet alternativ pentru nopți neliniștite</p>
-    <button class="play-button">Ascultă Live</button><h2 class="live-radio">Status stream: <span id="live-status">verific...</span></h2>
-<audio id="fallback-player" controls style="display: none;">
-  <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mp3" />
-  Browserul tău nu suportă playerul audio.
-</audio>
+    <p class="description">Sunet alternativ, non-stop, pentru nopți lungi.</p>
 
-<div class="banner">
-  <p>ON AIR: <strong>Sound OF THE NIGHT</strong> @149FM</p>
-</div>
+    <audio controls>
+      <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mpeg">
+      Browserul tău nu suportă playerul audio HTML5.
+    </audio>
 
-  </main>  <section class="about-radio">
-    <h3>Despre 149FM</h3>
-    <p>
-      Undeva în subsolul orașului, 149FM pulsează cu frecvențe alternative,
-      underground & hip-hop de noapte. Transmitem vibe-uri nefiltrate,
-      sunete curate, directe din suflet.
+    <p class="fallback-text">
+      Dacă playerul nu funcționează, poți <a href="https://stream.zeno.fm/6vc4ddpr3ehvv" target="_blank">asculta direct aici</a>.
     </p>
-  </section>  <section class="donate">
-    <h3>Sprijină vibe-ul nostru</h3>
-    <p>Susține radioul underground. Donațiile ne țin microfonul deschis!</p>
-    <a href="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID" target="_blank">
-      <button>Donează acum</button>
-    </a>
-  </section>  <section class="social-media">
-    <h3>Conectează-te cu noi</h3>
-    <a href="https://facebook.com" target="_blank">Facebook</a>
-    <a href="https://twitter.com" target="_blank">Twitter</a>
-    <a href="https://instagram.com" target="_blank">Instagram</a>
-  </section>  <div id="loading-circle" class="loader" style="display: none;">
-    <div class="spinner"></div>
-  </div>  <script src="script.js"></script></body>
+
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 149FM Radio. Toate drepturile rezervate.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
