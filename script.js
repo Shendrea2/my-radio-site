@@ -1,52 +1,54 @@
-console.log("149FM Status Checker Initialized");
+// script.js – versiune optimizată pentru 149FM
 
-document.addEventListener('DOMContentLoaded', () => { const playButton = document.querySelector('.play-button'); const loader = document.getElementById('loading-circle'); const fallbackAudio = document.getElementById('fallback-player'); const liveStatus = document.getElementById('live-status'); let sound;
+document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.querySelector('audio');
+    const playButton = document.querySelector('.play-button');
+    const statusText = document.getElementById('stream-status');
+    const loader = document.querySelector('.loader');
 
-async function checkStreamStatus() { try { const res = await fetch('https://stream.zeno.fm/6vc4ddpr3ehvv', { method: 'HEAD' }); return res.ok; } catch (e) { console.error("Nu s-a putut verifica statusul streamului.", e); return false; } }
+    // Inițializare text și ascundere loader
+    if (statusText) statusText.textContent = 'Status stream: verific...';
+    if (loader) loader.style.display = 'none';
 
-async function handlePlay() { if (loader) loader.style.display = 'flex';
-
-const streamActive = await checkStreamStatus();
-
-if (!streamActive) {
-  if (loader) loader.style.display = 'none';
-  alert('Streamul nu este disponibil momentan. Încearcă mai târziu.');
-  liveStatus.textContent = 'OFFLINE';
-  liveStatus.style.color = 'gray';
-  return;
-}
-
-liveStatus.textContent = 'LIVE';
-liveStatus.style.color = '#00ff00';
-
-fallbackAudio.pause();
-fallbackAudio.style.display = 'none';
-
-if (!sound) {
-  sound = new Howl({
-    src: ['https://stream.zeno.fm/6vc4ddpr3ehvv'],
-    html5: true,
-    onplay: () => {
-      console.log('Redarea a început');
-      if (loader) loader.style.display = 'none';
-      playButton.classList.add('playing');
-    },
-    onloaderror: (id, err) => {
-      console.error('Eroare la încărcare:', err);
-      if (loader) loader.style.display = 'none';
-      alert('Nu s-a putut încărca fluxul audio.');
-    },
-    onplayerror: (id, err) => {
-      console.error('Eroare la redare:', err);
-      if (loader) loader.style.display = 'none';
-      alert('Redarea a eșuat. Încearcă din nou.');
+    if (!audio || !playButton) {
+        console.error('Elementele audio sau playButton lipsesc din pagină.');
+        return;
     }
-  });
-}
 
-sound.play();
+    // Funcție de actualizare status
+    const updateStatus = (text) => {
+        if (statusText) statusText.textContent = text;
+    };
 
-}
+    // Eveniment play
+    playButton.addEventListener('click', () => {
+        loader.style.display = 'flex';
+        updateStatus('Se încarcă...');
 
-playButton.addEventListener('click', handlePlay); });
+        if (!audio.paused) {
+            audio.pause();
+            loader.style.display = 'none';
+            updateStatus('Redarea oprită.');
+            return;
+        }
 
+        audio.play()
+            .then(() => {
+                loader.style.display = 'none';
+                updateStatus('Stream activ!');
+            })
+            .catch((err) => {
+                loader.style.display = 'none';
+                updateStatus('Stream indisponibil!');
+                alert('Streamul nu este disponibil momentan. Încearcă mai târziu.');
+                console.error('Eroare la redare:', err);
+            });
+    });
+
+    // Tratăm eroarea nativă audio
+    audio.onerror = () => {
+        loader.style.display = 'none';
+        updateStatus('Stream indisponibil!');
+        alert('Eroare la încărcarea streamului.');
+    };
+});
