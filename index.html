@@ -5,23 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Radio Website</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.0/dist/howler.min.js"></script>
 </head>
 <body>
     <h1>Welcome to 149FM Radio</h1>
     <p>Enjoy the music!</p>
-    <script src="script.js"></script>
+
     <main>
-    <h2>Listen Now</h2>
-    <audio controls>
-        <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-</main>
+        <h2>Listen Now</h2>
+        <audio controls>
+            <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </main>
+
+    <div class="banner">
+        <p>Ascultă acum: <strong>Sound OF THE NIGHT</strong> pe 149FM - <span id="live-status">LIVE</span></p>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-<div class="banner">
-    <p>Ascultă acum: <strong>Sound OF THE NIGHT</strong> pe 149FM - <span id="live-status">LIVE</span></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/howler@2.2.0/dist/howler.min.js"></script>
-<script src="script.js"></script>
-</body>
