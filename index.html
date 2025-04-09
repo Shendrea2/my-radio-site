@@ -15,13 +15,20 @@
   </header>  <main>
     <section class="stream-section">
       <h2>Live Stream</h2>
-      <audio id="fallback-player" controls>
-        <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mpeg" />
-        Browserul tău nu suportă elementul audio.
-      </audio>
-      <div id="loading-circle" class="loader" aria-hidden="true"></div>
-      <div class="on-air">ON AIR: Sound OF THE NIGHT @149FM - LIVE</div>
-    </section><section class="despre">
+      <!-- Custom Audio Player with Playlist -->
+      <div class="custom-player">
+        <button id="playToggle" aria-label="Play/Pause"><i class="fas fa-play"></i></button>
+        <span id="statusText">Off Air</span>
+      </div><ul id="playlist">
+    <li data-src="https://stream.zeno.fm/6vc4ddpr3ehvv" class="active">Live Stream</li>
+    <li data-src="https://example.com/track1.mp3">Track 1</li>
+    <li data-src="https://example.com/track2.mp3">Track 2</li>
+  </ul>
+
+  <audio id="fallback-player" preload="none"></audio>
+</section>
+
+<section class="despre">
   <h3>Despre 149FM</h3>
   <p>
     Undeva în subsolul orașului, 149FM pulsează cu frecvențe alternative,
