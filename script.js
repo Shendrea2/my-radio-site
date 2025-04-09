@@ -1,10 +1,52 @@
-const playButton = document.querySelector('.play-button'); const audioPlayer = document.getElementById('fallback-player'); const loader = document.getElementById('loading-circle'); const playToggle = document.getElementById('playToggle'); const statusText = document.getElementById('statusText'); const playlistItems = document.querySelectorAll('#playlist li');
+console.log("149FM Status Checker Initialized");
 
-let isPlaying = false; let currentTrack = document.querySelector('#playlist li.active'); audioPlayer.src = currentTrack.dataset.src;
+document.addEventListener('DOMContentLoaded', () => { const playButton = document.querySelector('.play-button'); const loader = document.getElementById('loading-circle'); const fallbackAudio = document.getElementById('fallback-player'); const liveStatus = document.getElementById('live-status'); let sound;
 
-// Play button (de sus) playButton.addEventListener('click', () => { if (!isPlaying) { loader.style.display = 'block'; audioPlayer.play() .then(() => { isPlaying = true; loader.style.display = 'none'; playButton.textContent = 'Now Playing'; playButton.style.backgroundColor = '#28a745'; playToggle.innerHTML = '<i class="fas fa-pause"></i>'; statusText.textContent = 'Live Now'; }) .catch((error) => { console.error('Eroare la redare:', error); loader.style.display = 'none'; alert('Nu s-a putut porni radioul. Încearcă din nou.'); }); } else { audioPlayer.pause(); isPlaying = false; playButton.textContent = 'Play Radio'; playButton.style.backgroundColor = '#ff007f'; playToggle.innerHTML = '<i class="fas fa-play"></i>'; statusText.textContent = 'Off Air'; } });
+async function checkStreamStatus() { try { const res = await fetch('https://stream.zeno.fm/6vc4ddpr3ehvv', { method: 'HEAD' }); return res.ok; } catch (e) { console.error("Nu s-a putut verifica statusul streamului.", e); return false; } }
 
-// Custom player toggle playToggle.addEventListener('click', () => { if (!isPlaying) { audioPlayer.play().then(() => { isPlaying = true; playToggle.innerHTML = '<i class="fas fa-pause"></i>'; statusText.textContent = 'Live Now'; playButton.textContent = 'Now Playing'; playButton.style.backgroundColor = '#28a745'; }); } else { audioPlayer.pause(); isPlaying = false; playToggle.innerHTML = '<i class="fas fa-play"></i>'; statusText.textContent = 'Off Air'; playButton.textContent = 'Play Radio'; playButton.style.backgroundColor = '#ff007f'; } });
+async function handlePlay() { if (loader) loader.style.display = 'flex';
 
-// Playlist click playlistItems.forEach(item => { item.addEventListener('click', () => { playlistItems.forEach(li => li.classList.remove('active')); item.classList.add('active'); audioPlayer.src = item.dataset.src; audioPlayer.play(); isPlaying = true; playToggle.innerHTML = '<i class="fas fa-pause"></i>'; statusText.textContent = 'Now Playing: ' + item.textContent; playButton.textContent = 'Now Playing'; playButton.style.backgroundColor = '#28a745'; }); });
+const streamActive = await checkStreamStatus();
+
+if (!streamActive) {
+  if (loader) loader.style.display = 'none';
+  alert('Streamul nu este disponibil momentan. Încearcă mai târziu.');
+  liveStatus.textContent = 'OFFLINE';
+  liveStatus.style.color = 'gray';
+  return;
+}
+
+liveStatus.textContent = 'LIVE';
+liveStatus.style.color = '#00ff00';
+
+fallbackAudio.pause();
+fallbackAudio.style.display = 'none';
+
+if (!sound) {
+  sound = new Howl({
+    src: ['https://stream.zeno.fm/6vc4ddpr3ehvv'],
+    html5: true,
+    onplay: () => {
+      console.log('Redarea a început');
+      if (loader) loader.style.display = 'none';
+      playButton.classList.add('playing');
+    },
+    onloaderror: (id, err) => {
+      console.error('Eroare la încărcare:', err);
+      if (loader) loader.style.display = 'none';
+      alert('Nu s-a putut încărca fluxul audio.');
+    },
+    onplayerror: (id, err) => {
+      console.error('Eroare la redare:', err);
+      if (loader) loader.style.display = 'none';
+      alert('Redarea a eșuat. Încearcă din nou.');
+    }
+  });
+}
+
+sound.play();
+
+}
+
+playButton.addEventListener('click', handlePlay); });
 
