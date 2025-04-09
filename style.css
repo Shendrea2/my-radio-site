@@ -82,3 +82,51 @@ audio {
     font-size: 18px;
     font-weight: bold;
 }
+/* Stiluri globale */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Stiluri pentru containerul principal */
+.radio-player {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+/* Stiluri pentru titlu */
+.radio-player h2 {
+    font-size: 2rem;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+/* Stiluri pentru audio */
+.radio-player audio {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+    height: 40px;
+    background-color: #ddd;
+}
+
+/* Stiluri pentru descriere */
+.radio-player p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 20px;
+}
+
+/* Stiluri pentru textul ascultat */
+.radio-player strong {
+    color: #007BFF;
+}
