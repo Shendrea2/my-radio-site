@@ -1,54 +1,42 @@
-// script.js – versiune optimizată pentru 149FM
+// script.js
+const streamURL = "https://stream.zeno.fm/6vc4ddpr3ehvv";
+const audio = document.getElementById("radio");
+const playBtn = document.getElementById("playBtn");
+const status = document.getElementById("status");
 
-document.addEventListener('DOMContentLoaded', () => {
-    const audio = document.querySelector('audio');
-    const playButton = document.querySelector('.play-button');
-    const statusText = document.getElementById('stream-status');
-    const loader = document.querySelector('.loader');
+// Preîncărcare stream doar la click
+let streamInitialized = false;
 
-    // Inițializare text și ascundere loader
-    if (statusText) statusText.textContent = 'Status stream: verific...';
-    if (loader) loader.style.display = 'none';
+playBtn.addEventListener("click", () => {
+  if (!streamInitialized) {
+    audio.src = streamURL;
+    streamInitialized = true;
+  }
 
-    if (!audio || !playButton) {
-        console.error('Elementele audio sau playButton lipsesc din pagină.');
-        return;
-    }
-
-    // Funcție de actualizare status
-    const updateStatus = (text) => {
-        if (statusText) statusText.textContent = text;
-    };
-
-    // Eveniment play
-    playButton.addEventListener('click', () => {
-        loader.style.display = 'flex';
-        updateStatus('Se încarcă...');
-
-        if (!audio.paused) {
-            audio.pause();
-            loader.style.display = 'none';
-            updateStatus('Redarea oprită.');
-            return;
-        }
-
-        audio.play()
-            .then(() => {
-                loader.style.display = 'none';
-                updateStatus('Stream activ!');
-            })
-            .catch((err) => {
-                loader.style.display = 'none';
-                updateStatus('Stream indisponibil!');
-                alert('Streamul nu este disponibil momentan. Încearcă mai târziu.');
-                console.error('Eroare la redare:', err);
-            });
+  if (audio.paused) {
+    audio.play().then(() => {
+      status.textContent = "Status stream: în direct";
+      playBtn.textContent = "Oprește Radio";
+    }).catch((e) => {
+      console.error("Nu se poate reda streamul:", e);
+      alert("Streamul nu este disponibil momentan. Încearcă mai târziu.");
     });
-
-    // Tratăm eroarea nativă audio
-    audio.onerror = () => {
-        loader.style.display = 'none';
-        updateStatus('Stream indisponibil!');
-        alert('Eroare la încărcarea streamului.');
-    };
+  } else {
+    audio.pause();
+    status.textContent = "Status stream: oprit";
+    playBtn.textContent = "Ascultă Live";
+  }
 });
+
+// Test conexiune la stream (verificare HEAD)
+fetch(streamURL, { method: "HEAD" })
+  .then(res => {
+    if (res.ok) {
+      status.textContent = "Status stream: disponibil";
+    } else {
+      status.textContent = "Status stream: indisponibil";
+    }
+  })
+  .catch(() => {
+    status.textContent = "Status stream: indisponibil";
+  });
