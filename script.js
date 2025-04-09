@@ -6,3 +6,9 @@ console.log("Welcome to 149FM Radio!");
     });
     sound.play();
 </script>
+document.addEventListener('DOMContentLoaded', function () {
+    const audioElement = document.querySelector('audio');
+    audioElement.addEventListener('play', function () {
+        console.log('Radio started playing');
+    });
+});
