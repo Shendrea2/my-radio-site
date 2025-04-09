@@ -1,30 +1,40 @@
-/* Fondul paginii cu un gradient atractiv */
+/* === SETĂRI GENERALE === */
 body {
-    background: linear-gradient(to right, #ff7f50, #1e90ff);
+    margin: 0;
+    padding: 50px 0;
     font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #ff7f50, #1e90ff);
     color: #fff;
     text-align: center;
-    padding: 50px 0;
-    margin: 0;
 }
 
-/* Titlu principal */
+/* === HEADER === */
+header {
+    animation: fadeIn 2s ease-in-out;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
 h1 {
     font-size: 3rem;
     color: #fff;
-    font-weight: bold;
-    margin-bottom: 20px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
 }
 
-/* Text de introducere pentru utilizator */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* === TEXT GENERAL === */
 p {
     font-size: 1.5rem;
-    color: #fff;
     margin-bottom: 20px;
 }
 
-/* Stilizarea playerului de radio */
+/* === PLAYER AUDIO === */
 audio {
     width: 100%;
     max-width: 600px;
@@ -33,122 +43,82 @@ audio {
     border-radius: 10px;
     background-color: #333;
     padding: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Butonul de ascultare cu animație la hover */
-button {
+/* === BUTON PLAY === */
+button,
+.play-button {
     background-color: #FF4500;
     color: white;
-    border-radius: 5px;
     border: none;
+    border-radius: 5px;
     padding: 12px 24px;
-    cursor: pointer;
     font-size: 1.2em;
+    cursor: pointer;
     transition: all 0.3s ease;
+    margin: 10px auto;
 }
 
-/* Efect de hover pe butoane */
-button:hover {
+button:hover,
+.play-button:hover {
     background-color: #FF6347;
     transform: scale(1.1);
 }
 
-/* Secțiunea de playlist personalizată */
-.playlist {
-    background-color: #1a1a1a;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
+/* === LIVE RADIO === */
+.live-radio {
+    font-size: 2rem;
+    margin-top: 30px;
+    font-weight: bold;
 }
 
-/* Banner de informare cu background distinct */
+/* === BANNER === */
 .banner {
     background-color: #FF4500;
     color: #fff;
     padding: 15px;
-    text-align: center;
+    margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
-    margin-top: 20px;
     border-radius: 10px;
 }
 
-/* Stiluri pentru zona "Live Radio" */
-.live-radio {
-    font-size: 2rem;
-    margin-top: 30px;
-    color: #fff;
-    font-weight: bold;
-}
-
-/* Logo pentru header */
-header img {
-    max-width: 150px;
-    height: auto;
-    border-radius: 50%;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
-}
-
-/* Detalii pentru secțiunea despre radio */
-.about-radio {
-    font-size: 1.2rem;
-    color: #ddd;
-    margin-top: 50px;
-}
-
-/* Efecte de animație pentru header */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-header {
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 30px;
-    font-weight: bold;
-    animation: fadeIn 2s ease-in-out;
-}
-
-/* Stiluri pentru textul ascultat în player */
-.radio-player strong {
-    color: #007BFF;
-}
+/* === ABOUT RADIO === */
 .about-radio {
     background-color: #2c3e50;
     padding: 20px;
+    margin: 40px auto 0;
+    max-width: 800px;
     border-radius: 8px;
-    margin-top: 30px;
-    color: white;
     font-size: 1rem;
+    color: white;
 }
 .about-radio h3 {
     color: #f39c12;
 }
+
+/* === DONAȚII === */
 .donate {
     background-color: #FF6347;
-    color: white;
     padding: 20px;
+    margin: 40px auto;
+    max-width: 800px;
     border-radius: 10px;
-    margin-top: 40px;
+    color: white;
 }
 .donate button {
     background-color: #1e90ff;
     padding: 12px 20px;
-    border-radius: 5px;
-    color: white;
     font-size: 1.2rem;
+    border-radius: 5px;
     cursor: pointer;
 }
 .donate button:hover {
     background-color: #ff4500;
 }
+
+/* === SOCIAL MEDIA === */
 .social-media {
     margin-top: 30px;
     font-size: 1.2rem;
@@ -158,13 +128,16 @@ header {
     color: #fff;
     margin: 0 10px;
     background-color: #1e90ff;
-    padding: 10px;
+    padding: 10px 14px;
     border-radius: 5px;
+    display: inline-block;
     transition: background-color 0.3s;
 }
 .social-media a:hover {
     background-color: #ff6347;
 }
+
+/* === LOADER === */
 .loader {
     position: fixed;
     top: 0;
@@ -175,7 +148,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 9999;
 }
 .spinner {
     border: 4px solid #f3f3f3;
@@ -188,4 +161,22 @@ header {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+    .live-radio {
+        font-size: 1.5rem;
+    }
+    .banner,
+    .about-radio,
+    .donate {
+        padding: 15px;
+    }
 }
