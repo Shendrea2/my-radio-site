@@ -12,3 +12,21 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Radio started playing');
     });
 });
+// Animație pe butonul de ascultare la click
+const playButton = document.querySelector('.play-button');
+
+playButton.addEventListener('click', () => {
+    playButton.style.transform = "scale(0.9)";
+    setTimeout(() => {
+        playButton.style.transform = "scale(1)";
+    }, 300);
+});
+
+// Schimbarea culorii la hover pentru butonul de ascultare
+playButton.addEventListener('mouseover', () => {
+    playButton.style.backgroundColor = '#ff6347';
+});
+
+playButton.addEventListener('mouseout', () => {
+    playButton.style.backgroundColor = '#ff7f50';
+});
