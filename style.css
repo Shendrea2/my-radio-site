@@ -23,3 +23,54 @@ h2 {
     color: #1e90ff;
     font-size: 24px;
 }
+/* Modifică fundalul și aspectul general */
+body {
+    background-color: #121212; /* Fundal întunecat */
+    color: #fff; /* Text alb */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Personalizează butoanele */
+button {
+    background-color: #FF4500;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Efect de hover pe butoane */
+button:hover {
+    background-color: #FF6347;
+}
+
+/* Personalizează headerul pentru a include un logo */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+header img {
+    width: 100px;
+    height: auto;
+}
+
+/* Stilizare pentru secțiunea de playlist */
+.playlist {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Animare pentru audio player */
+audio {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #333;
+}
