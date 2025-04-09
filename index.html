@@ -1,55 +1,14 @@
-<!DOCTYPE html><html lang="ro">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>149FM Underground Radio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-</head>
-<body>
-  <header>
-    <h1>149FM<br /><span>Underground Radio</span></h1>
-    <p class="subtitle">Sunet alternativ pentru nopți neliniștite</p>
-    <button class="play-button" aria-label="Pornește radioul">Play Radio</button>
-  </header>  <main>
-    <section class="stream-section">
-      <h2>Live Stream</h2>
-      <!-- Custom Audio Player with Playlist -->
-      <div class="custom-player">
-        <button id="playToggle" aria-label="Play/Pause"><i class="fas fa-play"></i></button>
-        <span id="statusText">Off Air</span>
-      </div><ul id="playlist">
-    <li data-src="https://stream.zeno.fm/6vc4ddpr3ehvv" class="active">Live Stream</li>
-    <li data-src="https://example.com/track1.mp3">Track 1</li>
-    <li data-src="https://example.com/track2.mp3">Track 2</li>
-  </ul>
+const playButton = document.querySelector('.play-button'); const audioPlayer = document.getElementById('fallback-player'); const playToggle = document.getElementById('playToggle'); const statusText = document.getElementById('statusText'); const playlistItems = document.querySelectorAll('#playlist li');
 
-  <audio id="fallback-player" preload="none"></audio>
-</section>
+let isPlaying = false; let currentTrack = document.querySelector('#playlist li.active'); audioPlayer.src = currentTrack.dataset.src;
 
-<section class="despre">
-  <h3>Despre 149FM</h3>
-  <p>
-    Undeva în subsolul orașului, 149FM pulsează cu frecvențe alternative,
-    underground & hip-hop de noapte. Transmitem vibe-uri nefiltrate, sunete curate, direct din suflet.
-  </p>
-</section>
+function updateUIPlaying(text) { isPlaying = true; playButton.textContent = 'Now Playing'; playButton.style.backgroundColor = '#28a745'; playToggle.innerHTML = '<i class="fas fa-pause"></i>'; statusText.textContent = text || 'Live Now'; }
 
-<section class="donatii">
-  <h3>Sprijină vibe-ul nostru</h3>
-  <p>Susține radioul underground. Donațiile ne țin microfonul deschis!</p>
-  <button class="donate-button"><i class="fas fa-heart"></i> Donează acum</button>
-</section>
+function updateUIPaused() { isPlaying = false; playButton.textContent = 'Play Radio'; playButton.style.backgroundColor = '#ff007f'; playToggle.innerHTML = '<i class="fas fa-play"></i>'; statusText.textContent = 'Off Air'; }
 
-<section class="social">
-  <h3>Conectează-te cu noi</h3>
-  <div class="icons">
-    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-  </div>
-</section>
+playButton.addEventListener('click', () => { if (!isPlaying) { audioPlayer.play() .then(() => updateUIPlaying()) .catch(err => alert('Eroare la redare')); } else { audioPlayer.pause(); updateUIPaused(); } });
 
-  </main>  <script src="script.js"></script></body>
-</html>
+playToggle.addEventListener('click', () => { if (!isPlaying) { audioPlayer.play() .then(() => updateUIPlaying()) .catch(err => alert('Eroare la redare')); } else { audioPlayer.pause(); updateUIPaused(); } });
+
+playlistItems.forEach(item => { item.addEventListener('click', () => { playlistItems.forEach(li => li.classList.remove('active')); item.classList.add('active'); audioPlayer.src = item.dataset.src; audioPlayer.play() .then(() => updateUIPlaying('Now Playing: ' + item.textContent)) .catch(err => alert('Eroare la redare')); }); });
+
