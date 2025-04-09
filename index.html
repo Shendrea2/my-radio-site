@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="ro">
+<!DOCTYPE html><html lang="ro">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,61 +7,40 @@
   <script src="https://cdn.jsdelivr.net/npm/howler@2.2.0/dist/howler.min.js"></script>
 </head>
 <body>
-
+  <div class="noise-overlay"></div>
   <header>
-    <h1>Welcome to 149FM Radio</h1>
-  </header>
+    <h1>149FM Underground Radio</h1>
+  </header>  <main>
+    <p class="slogan">Sunet alternativ pentru nopți neliniștite</p>
+    <button class="play-button">Play Radio</button><h2 class="live-radio">Live Stream</h2>
+<audio id="fallback-player" controls>
+  <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mp3" />
+  Browserul tău nu suportă playerul audio.
+</audio>
 
-  <main>
-    <p>Enjoy the music!</p>
-    <button class="play-button">Ascultă Live</button>
+<div class="banner">
+  <p>ON AIR: <strong>Sound OF THE NIGHT</strong> @149FM - <span id="live-status">LIVE</span></p>
+</div>
 
-    <h2 class="live-radio">Live Radio - 149FM</h2>
-    <audio id="fallback-player" controls>
-      <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mp3" />
-      Browserul tău nu suportă playerul audio.
-    </audio>
-
-    <div class="banner">
-      <p>
-        Ascultă acum: <strong>Sound OF THE NIGHT</strong> pe 149FM - 
-        <span id="live-status">LIVE</span>
-      </p>
-    </div>
-  </main>
-
-  <!-- Secțiune despre radio -->
-  <section class="about-radio">
+  </main>  <section class="about-radio">
     <h3>Despre 149FM</h3>
     <p>
-      149FM este un radio dedicat celor care iubesc muzica de calitate, cu un mix de melodii energice și vibe-uri cool, special gândite pentru oaspeții care vor să se simtă liberi și să se relaxeze.
+      Undeva în subsolul orașului, 149FM pulsează cu frecvențe alternative,
+      underground & hip-hop de noapte. Transmitem vibe-uri nefiltrate,
+      sunete curate, directe din suflet.
     </p>
-  </section>
-
-  <!-- Secțiune donații -->
-  <section class="donate">
-    <h3>Susține 149FM</h3>
-    <p>
-      Dacă îți place muzica noastră, poți să ne susții prin donații. Orice ajutor contează!
-    </p>
+  </section>  <section class="donate">
+    <h3>Sprijină vibe-ul nostru</h3>
+    <p>Susține radioul underground. Donațiile ne țin microfonul deschis!</p>
     <a href="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID" target="_blank">
       <button>Donează acum</button>
     </a>
-  </section>
-
-  <!-- Rețele sociale -->
-  <section class="social-media">
-    <h3>Urmărește-ne pe Rețelele Sociale</h3>
+  </section>  <section class="social-media">
+    <h3>Conectează-te cu noi</h3>
     <a href="https://facebook.com" target="_blank">Facebook</a>
     <a href="https://twitter.com" target="_blank">Twitter</a>
     <a href="https://instagram.com" target="_blank">Instagram</a>
-  </section>
-
-  <!-- Loader -->
-  <div id="loading-circle" class="loader" style="display: none;">
+  </section>  <div id="loading-circle" class="loader" style="display: none;">
     <div class="spinner"></div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+  </div>  <script src="script.js"></script></body>
 </html>
