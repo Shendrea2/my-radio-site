@@ -1,5 +1,5 @@
 console.log("Welcome to 149FM Radio!");
-<script src="https://cdn.jsdelivr.net/npm/howler@2.2.0/dist/howler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/howler"></script>
 <script>
     var sound = new Howl({
         src: ['https://stream.zeno.fm/6vc4ddpr3ehvv']
