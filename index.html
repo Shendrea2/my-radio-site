@@ -1,14 +1,45 @@
-const playButton = document.querySelector('.play-button'); const audioPlayer = document.getElementById('fallback-player'); const playToggle = document.getElementById('playToggle'); const statusText = document.getElementById('statusText'); const playlistItems = document.querySelectorAll('#playlist li');
+<!DOCTYPE html><html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>149FM Radio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/howler@2.2.0/dist/howler.min.js"></script>
+</head>
+<body>
+  <div class="noise-overlay"></div>  <header>
+    <h1>149FM Underground Radio</h1>
+  </header>  <main>
+    <p class="slogan">Sunet alternativ pentru nopți neliniștite</p>
+    <button class="play-button">Ascultă Live</button><h2 class="live-radio">Status stream: <span id="live-status">verific...</span></h2>
+<audio id="fallback-player" controls style="display: none;">
+  <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mp3" />
+  Browserul tău nu suportă playerul audio.
+</audio>
 
-let isPlaying = false; let currentTrack = document.querySelector('#playlist li.active'); audioPlayer.src = currentTrack.dataset.src;
+<div class="banner">
+  <p>ON AIR: <strong>Sound OF THE NIGHT</strong> @149FM</p>
+</div>
 
-function updateUIPlaying(text) { isPlaying = true; playButton.textContent = 'Now Playing'; playButton.style.backgroundColor = '#28a745'; playToggle.innerHTML = '<i class="fas fa-pause"></i>'; statusText.textContent = text || 'Live Now'; }
-
-function updateUIPaused() { isPlaying = false; playButton.textContent = 'Play Radio'; playButton.style.backgroundColor = '#ff007f'; playToggle.innerHTML = '<i class="fas fa-play"></i>'; statusText.textContent = 'Off Air'; }
-
-playButton.addEventListener('click', () => { if (!isPlaying) { audioPlayer.play() .then(() => updateUIPlaying()) .catch(err => alert('Eroare la redare')); } else { audioPlayer.pause(); updateUIPaused(); } });
-
-playToggle.addEventListener('click', () => { if (!isPlaying) { audioPlayer.play() .then(() => updateUIPlaying()) .catch(err => alert('Eroare la redare')); } else { audioPlayer.pause(); updateUIPaused(); } });
-
-playlistItems.forEach(item => { item.addEventListener('click', () => { playlistItems.forEach(li => li.classList.remove('active')); item.classList.add('active'); audioPlayer.src = item.dataset.src; audioPlayer.play() .then(() => updateUIPlaying('Now Playing: ' + item.textContent)) .catch(err => alert('Eroare la redare')); }); });
-
+  </main>  <section class="about-radio">
+    <h3>Despre 149FM</h3>
+    <p>
+      Undeva în subsolul orașului, 149FM pulsează cu frecvențe alternative,
+      underground & hip-hop de noapte. Transmitem vibe-uri nefiltrate,
+      sunete curate, directe din suflet.
+    </p>
+  </section>  <section class="donate">
+    <h3>Sprijină vibe-ul nostru</h3>
+    <p>Susține radioul underground. Donațiile ne țin microfonul deschis!</p>
+    <a href="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID" target="_blank">
+      <button>Donează acum</button>
+    </a>
+  </section>  <section class="social-media">
+    <h3>Conectează-te cu noi</h3>
+    <a href="https://facebook.com" target="_blank">Facebook</a>
+    <a href="https://twitter.com" target="_blank">Twitter</a>
+    <a href="https://instagram.com" target="_blank">Instagram</a>
+  </section>  <div id="loading-circle" class="loader" style="display: none;">
+    <div class="spinner"></div>
+  </div>  <script src="script.js"></script></body>
+</html>
