@@ -1,36 +1,69 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ascultă 149FM Underground Radio - Sunet alternativ, non-stop, pentru nopți lungi.">
+  <meta name="keywords" content="radio, underground, muzică, 149FM">
+  <meta property="og:title" content="149FM Underground Radio">
+  <meta property="og:description" content="Sunet alternativ, non-stop, pentru nopți lungi.">
+  <meta property="og:image" content="logo.png"> <!-- Înlocuiește cu URL-ul logo-ului -->
+  <meta property="og:url" content="https://149fm.radio">
+  <meta name="twitter:card" content="summary_large_image">
   <title>149FM Radio</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <div class="container">
-    <h1>149FM Underground Radio</h1>
-    <p class="description">Sunet alternativ, non-stop, pentru nopți lungi.</p>
+    <header>
+      <h1>149FM Underground Radio</h1>
+      <p class="description">Sunet alternativ, non-stop, pentru nopți lungi.</p>
+    </header>
 
-    <audio controls>
-      <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mpeg">
-      Browserul tău nu suportă playerul audio HTML5.
-    </audio>
+    <main>
+      <section class="player-section">
+        <audio controls aria-label="Player audio pentru 149FM Radio">
+          <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mpeg">
+          Browserul tău nu suportă playerul audio HTML5.
+        </audio>
+        <p class="fallback-text">
+          Dacă playerul nu funcționează, poți <a href="https://stream.zeno.fm/6vc4ddpr3ehvv" target="_blank" aria-label="Link pentru a asculta direct">asculta direct aici</a>.
+        </p>
+      </section>
 
-    <p class="fallback-text">
-      Dacă playerul nu funcționează, poți <a href="https://stream.zeno.fm/6vc4ddpr3ehvv" target="_blank">asculta direct aici</a>.
-    </p>
-
-    <div class="social-links">
-      <a href="https://facebook.com" target="_blank">Facebook</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
-    </div>
+      <section class="social-links">
+        <h2>Urmărește-ne pe rețele sociale</h2>
+        <a href="https://facebook.com" target="_blank" aria-label="Vizitează pagina noastră de Facebook">
+          <img src="facebook-icon.png" alt="Facebook"> Facebook
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Vizitează pagina noastră de Instagram">
+          <img src="instagram-icon.png" alt="Instagram"> Instagram
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Vizitează pagina noastră de Twitter">
+          <img src="twitter-icon.png" alt="Twitter"> Twitter
+        </a>
+      </section>
+    </main>
 
     <footer>
       <p>&copy; 2024 149FM Radio. Toate drepturile rezervate.</p>
     </footer>
   </div>
 
+  <!-- Include Google Analytics sau alt script de monitorizare -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXX-X');
+  </script>
+
   <script src="script.js"></script>
 </body>
+
 </html>
