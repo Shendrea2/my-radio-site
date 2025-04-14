@@ -8,7 +8,7 @@
   <meta name="keywords" content="radio, underground, muzică, 149FM">
   <meta property="og:title" content="149FM Underground Radio">
   <meta property="og:description" content="Sunet alternativ, non-stop, pentru nopți lungi.">
-  <meta property="og:image" content="logo.png"> <!-- Înlocuiește cu URL-ul logo-ului -->
+  <meta property="og:image" content="logo.png">
   <meta property="og:url" content="https://149fm.radio">
   <meta name="twitter:card" content="summary_large_image">
   <title>149FM Radio</title>
@@ -22,9 +22,12 @@
     <header>
       <h1>149FM Underground Radio</h1>
       <p class="description">Sunet alternativ, non-stop, pentru nopți lungi.</p>
+      <!-- Buton pentru schimbarea temei -->
+      <button id="theme-toggle">Schimbă tema</button>
     </header>
 
     <main>
+      <!-- Player Audio -->
       <section class="player-section">
         <audio controls aria-label="Player audio pentru 149FM Radio">
           <source src="https://stream.zeno.fm/6vc4ddpr3ehvv" type="audio/mpeg">
@@ -35,17 +38,29 @@
         </p>
       </section>
 
+      <!-- Secțiunea Despre noi -->
+      <section id="about">
+        <h2>Despre noi</h2>
+        <p>149FM Radio oferă sunet alternativ, non-stop, pentru nopți lungi. Scopul nostru este să îți aducem muzică de calitate, oriunde te-ai afla.</p>
+      </section>
+
+      <!-- Secțiunea Social Media -->
       <section class="social-links">
         <h2>Urmărește-ne pe rețele sociale</h2>
-        <a href="https://facebook.com" target="_blank" aria-label="Vizitează pagina noastră de Facebook">
-          <img src="facebook-icon.png" alt="Facebook"> Facebook
-        </a>
-        <a href="https://instagram.com" target="_blank" aria-label="Vizitează pagina noastră de Instagram">
-          <img src="instagram-icon.png" alt="Instagram"> Instagram
-        </a>
-        <a href="https://twitter.com" target="_blank" aria-label="Vizitează pagina noastră de Twitter">
-          <img src="twitter-icon.png" alt="Twitter"> Twitter
-        </a>
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+      </section>
+
+      <!-- Formular de Contact -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <form id="contact-form">
+          <input type="text" id="name" placeholder="Numele tău" required>
+          <input type="email" id="email" placeholder="Adresa de email" required>
+          <textarea id="message" placeholder="Mesajul tău" required></textarea>
+          <button type="submit">Trimite</button>
+        </form>
       </section>
     </main>
 
