@@ -1,14 +1,12 @@
 // script.js
 // Funcționalități pentru 149FM Radio
 
-// Verificăm dacă documentul este încărcat complet
 document.addEventListener("DOMContentLoaded", () => {
   console.log("149FM player loaded cu succes.");
 
-  // Referință la elementul audio
+  // Referință la player-ul audio
   const audioPlayer = document.querySelector('audio');
 
-  // Verificare dacă elementul audio există
   if (audioPlayer) {
     console.log("Player-ul audio a fost găsit.");
 
@@ -23,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Gestionarea erorilor de redare
     audioPlayer.addEventListener('error', () => {
-      console.error("A apărut o problemă cu redarea audio.");
       alert("Player-ul audio întâmpină probleme. Verifică conexiunea sau încearcă mai târziu.");
     });
   } else {
@@ -31,13 +28,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Funcționalitate pentru schimbarea temei (zi/noapte)
-  const themeToggle = document.querySelector('#theme-toggle');
+  const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-theme');
-      console.log("Tema a fost schimbată.");
+      themeToggle.textContent = document.body.classList.contains('dark-theme') ? 'Temă deschisă' : 'Temă întunecată';
     });
   }
 
-  // Alte funcționalități pot fi adăugate aici
+  // Formular de contact
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      console.log(`Nume: ${name}, Email: ${email}, Mesaj: ${message}`);
+      alert(`Mulțumim, ${name}! Mesajul tău a fost trimis.`);
+      contactForm.reset();
+    });
+  }
 });
