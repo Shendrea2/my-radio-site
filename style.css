@@ -1,10 +1,24 @@
 /* style.css */
+
+/* Variabile pentru culori */
+:root {
+  --primary-color: #ff0057;
+  --primary-hover: #e6004c;
+  --background-color: #0d0d0d;
+  --container-bg: #1a1a1a;
+  --text-color: #f2f2f2;
+  --secondary-text: #bbb;
+  --link-color: #00ffc3;
+  --footer-text: #888;
+  --shadow-color: rgba(255, 0, 85, 0.3);
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background: #0d0d0d;
-  color: #f2f2f2;
+  background: var(--background-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,20 +30,20 @@ body {
   padding: 2rem;
   max-width: 600px;
   width: 90%;
-  background-color: #1a1a1a;
+  background-color: var(--container-bg);
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+  box-shadow: 0 0 15px var(--shadow-color);
 }
 
 h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #ff0057;
-  text-shadow: 0 0 5px #ff0057;
+  color: var(--primary-color);
+  text-shadow: 0 0 5px var(--primary-color);
 }
 
 .description {
-  color: #bbb;
+  color: var(--secondary-text);
   font-size: 1rem;
   margin-bottom: 1.5rem;
 }
@@ -39,6 +53,7 @@ audio {
   margin-bottom: 1rem;
   border-radius: 8px;
   background-color: #333;
+  outline: none;
 }
 
 .fallback-text {
@@ -47,8 +62,13 @@ audio {
 }
 
 .fallback-text a {
-  color: #00ffc3;
+  color: var(--link-color);
   text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.fallback-text a:hover {
+  color: var(--primary-color);
 }
 
 .social-links {
@@ -59,19 +79,55 @@ audio {
   display: inline-block;
   margin: 0 0.5rem;
   padding: 0.5rem 1rem;
-  background-color: #ff0057;
+  background-color: var(--primary-color);
   color: #fff;
   border-radius: 5px;
   text-decoration: none;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .social-links a:hover {
-  background-color: #e6004c;
+  background-color: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+.social-links a:focus {
+  outline: 2px dashed var(--link-color);
+  outline-offset: 4px;
 }
 
 footer {
   font-size: 0.85rem;
-  color: #888;
+  color: var(--footer-text);
   margin-top: 1rem;
+}
+
+/* Design responsiv */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+
+  .social-links a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
 }
