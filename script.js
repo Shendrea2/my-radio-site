@@ -50,4 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
       contactForm.reset();
     });
   }
+
+  // Evitarea erorii SecurityError pentru foi de stil externe
+  Array.from(document.styleSheets).forEach((stylesheet) => {
+    try {
+      if (stylesheet.href && stylesheet.href.startsWith(window.location.origin)) {
+        console.log('Rules:', stylesheet.cssRules);
+      }
+    } catch (error) {
+      console.warn(`Nu se pot accesa regulile din: ${stylesheet.href}`, error);
+    }
+  });
 });
